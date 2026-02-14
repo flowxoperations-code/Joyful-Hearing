@@ -13,10 +13,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 🔑 Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.HOSTINGER_SSH_KEY }}
+
+      - name: 🔐 Add Hostinger to known hosts
         run: |
-          mkdir -p ~/.ssh/
-          printf '%s\n' "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.HOSTINGER_SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: 🚀 Deploy via Rsync
