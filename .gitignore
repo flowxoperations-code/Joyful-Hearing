@@ -1,0 +1,45 @@
+# Ignore macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ignore thumbnails
+._*
+
+# Ignore files that might appear in the root
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore project documentation (not needed on server)
+docs/
+deliverables/
+*.docx
+*.pdf
+proposal.*
+*-Contract.*
+
+# Ignore git
+.git/
+# .gitignore (commented out to allow committing)
+.gitattributes
+
+# Ignore GitHub files (commented out to allow workflows)
+# .github/
+README.md
+
+# Ignore logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore node_modules if any
+node_modules/
