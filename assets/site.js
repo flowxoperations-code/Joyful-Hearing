@@ -171,9 +171,12 @@
     });
   });
 
-  /* ── Contact Form Validation ── */
+  /* ── Contact Form Validation + Email Delivery ── */
   const form = document.getElementById('contact-form');
   if (form) {
+    const CONTACT_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/ashishbharti.joyfulhearing@gmail.com';
+    const CONTACT_WHATSAPP_FALLBACK = 'https://wa.me/918240516775';
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const errors = [];
@@ -208,34 +211,60 @@
         return;
       }
 
-      // Submit via WhatsApp message (no backend needed)
-      const message = encodeURIComponent(
-        `Hi, I'd like to book an appointment.\n\n` +
-        `Name: ${name.value.trim()}\n` +
-        `Phone: ${phone.value.trim()}\n` +
-        `Service: ${service.options[service.selectedIndex].text}\n` +
-        `Message: ${form.querySelector('#message').value.trim() || 'N/A'}`
-      );
+      // Prepare payload for email delivery
+      const nameValue = name.value.trim();
+      const phoneValue = phone.value.trim();
+      const serviceValue = service.options[service.selectedIndex].text;
+      const messageValue = form.querySelector('#message').value.trim() || 'N/A';
 
-      // Show success
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
       if (status) {
-        status.classList.remove('hidden', 'bg-red-50', 'text-red-700');
-        status.classList.add('bg-green-50', 'text-green-700');
-        status.textContent = 'Redirecting to WhatsApp to confirm your appointment...';
+        status.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'bg-green-50', 'text-green-700');
+        status.classList.add('bg-slate-100', 'text-slate-700');
+        status.textContent = 'Sending your message to the clinic...';
       }
 
-      setTimeout(() => {
-        window.open(`https://wa.me/918240516775?text=${message}`, '_blank');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
-        form.reset();
-        if (status) {
-          status.textContent = 'Message prepared! Please send it via WhatsApp to confirm.';
-        }
-      }, 600);
+      const payload = new FormData();
+      payload.append('name', nameValue);
+      payload.append('phone', phoneValue);
+      payload.append('service', serviceValue);
+      payload.append('message', messageValue);
+      payload.append('_subject', `New website inquiry: ${serviceValue}`);
+      payload.append('_template', 'table');
+      payload.append('_captcha', 'false');
+
+      fetch(CONTACT_EMAIL_ENDPOINT, {
+        method: 'POST',
+        body: payload,
+        headers: { Accept: 'application/json' },
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error(`Email request failed with status ${res.status}`);
+          return res.json();
+        })
+        .then(() => {
+          if (status) {
+            status.classList.remove('bg-slate-100', 'text-slate-700');
+            status.classList.add('bg-green-50', 'text-green-700');
+            status.textContent = 'Message sent successfully. The clinic will contact you shortly.';
+          }
+          form.reset();
+        })
+        .catch(() => {
+          if (status) {
+            status.classList.remove('bg-slate-100', 'text-slate-700');
+            status.classList.add('bg-red-50', 'text-red-700');
+            status.innerHTML =
+              'Could not send email right now. Please use WhatsApp immediately: ' +
+              `<a class="underline font-semibold" href="${CONTACT_WHATSAPP_FALLBACK}" target="_blank" rel="noreferrer">Chat on WhatsApp</a>.`;
+          }
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        });
     });
   }
 
@@ -279,6 +308,173 @@
     topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  }
+
+  /* ── Floating Hearing Quiz CTA ── */
+  function mountFloatingQuizButton() {
+    if (currentFile === 'hearing-screening.html') return;
+    if (document.getElementById('floating-hearing-quiz')) return;
+
+    const quizBtn = document.createElement('a');
+    quizBtn.id = 'floating-hearing-quiz';
+    quizBtn.href = 'hearing-screening.html';
+    quizBtn.className = 'floating-quiz-btn';
+    quizBtn.setAttribute('aria-label', 'Take the 2-minute hearing screening quiz');
+    quizBtn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 12a5 5 0 0 0-10 0"/><path d="M12 17.5a5.5 5.5 0 0 1-5.5-5.5V9a5.5 5.5 0 0 1 11 0v3a7.5 7.5 0 0 1-15 0V9"/><path d="M9.5 21h5"/></svg><span>Take 2-min Hearing Quiz</span>';
+    document.body.appendChild(quizBtn);
+  }
+
+  mountFloatingQuizButton();
+
+  /* ── Hearing Screening Questionnaire ── */
+  const screeningForm = document.getElementById('hearing-screening-form');
+  if (screeningForm) {
+    const progressText = document.getElementById('screening-progress-text');
+    const progressBar = document.getElementById('screening-progress-bar');
+    const submitBtn = document.getElementById('screening-submit');
+    const resetBtn = document.getElementById('screening-reset');
+    const resultSection = document.getElementById('screening-result');
+    const scoreValue = document.getElementById('screening-score');
+    const scoreBand = document.getElementById('screening-band');
+    const scoreSummary = document.getElementById('screening-summary');
+    const nextStep = document.getElementById('screening-next-step');
+    const severityBadge = document.getElementById('screening-severity');
+    const whatsappBtn = document.getElementById('screening-whatsapp-btn');
+    const bookBtn = document.getElementById('screening-book-btn');
+
+    const questionNames = Array.from(
+      new Set(
+        Array.from(screeningForm.querySelectorAll('input[type="radio"]'))
+          .map((input) => input.name)
+          .filter(Boolean)
+      )
+    );
+    const totalQuestions = questionNames.length;
+
+    const bands = [
+      {
+        min: 0,
+        max: 4,
+        label: '0-4 (Within normal limits)',
+        summary: 'Hearing appears within normal limits. Continue monitoring yearly.',
+        next: 'Low current risk. Maintain annual hearing check-ups, especially if you are exposed to loud noise.',
+        cta: 'Book Preventive Screening',
+        severityClass: 'bg-emerald-100 text-emerald-700',
+      },
+      {
+        min: 5,
+        max: 10,
+        label: '5-10 (Possible mild difficulty)',
+        summary: 'Possible mild hearing difficulty detected. A screening test is recommended.',
+        next: 'You may benefit from a baseline hearing test to catch early changes and avoid progression.',
+        cta: 'Book Screening Test',
+        severityClass: 'bg-amber-100 text-amber-700',
+      },
+      {
+        min: 11,
+        max: 16,
+        label: '11-16 (Likely impairment)',
+        summary: 'Likely hearing impairment. A complete diagnostic evaluation is recommended.',
+        next: 'A full audiological evaluation will help identify degree and type of hearing issue for treatment planning.',
+        cta: 'Book Diagnostic Evaluation',
+        severityClass: 'bg-orange-100 text-orange-700',
+      },
+      {
+        min: 17,
+        max: 24,
+        label: '17-24 (Significant difficulty)',
+        summary: 'Significant hearing difficulty indicated. Immediate audiological assessment is advised.',
+        next: 'Please contact the clinic as soon as possible for priority assessment and a personalized care plan.',
+        cta: 'Book Priority Assessment',
+        severityClass: 'bg-red-100 text-red-700',
+      },
+    ];
+
+    const getBandForScore = (score) =>
+      bands.find((band) => score >= band.min && score <= band.max) || bands[0];
+
+    const getAnsweredCount = () =>
+      questionNames.filter((name) => screeningForm.querySelector(`input[name="${name}"]:checked`)).length;
+
+    const updateProgress = () => {
+      const answered = getAnsweredCount();
+      const percent = totalQuestions ? Math.round((answered / totalQuestions) * 100) : 0;
+
+      if (progressText) progressText.textContent = `${answered}/${totalQuestions} answered`;
+      if (progressBar) progressBar.style.width = `${percent}%`;
+      if (submitBtn) submitBtn.disabled = answered !== totalQuestions;
+    };
+
+    const showIncompleteMessage = () => {
+      if (typeof window.showToast === 'function') {
+        window.showToast('Please answer all questions before viewing your result.', 'error');
+      } else {
+        window.alert('Please answer all questions before viewing your result.');
+      }
+    };
+
+    screeningForm.addEventListener('change', updateProgress);
+
+    screeningForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const answered = getAnsweredCount();
+      if (answered !== totalQuestions) {
+        showIncompleteMessage();
+        return;
+      }
+
+      let score = 0;
+      questionNames.forEach((name) => {
+        const selected = screeningForm.querySelector(`input[name="${name}"]:checked`);
+        score += Number(selected?.value || 0);
+      });
+
+      const band = getBandForScore(score);
+
+      if (scoreValue) scoreValue.textContent = `${score}/24`;
+      if (scoreBand) scoreBand.textContent = band.label;
+      if (scoreSummary) scoreSummary.textContent = band.summary;
+      if (nextStep) nextStep.textContent = band.next;
+
+      if (severityBadge) {
+        severityBadge.className =
+          'inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ' + band.severityClass;
+        severityBadge.textContent = band.label;
+      }
+
+      if (bookBtn) {
+        bookBtn.textContent = band.cta;
+        bookBtn.href = 'contact.html';
+      }
+
+      if (whatsappBtn) {
+        const message = encodeURIComponent(
+          `Hi Joyful Hearing Clinic, I completed the 2-minute hearing screening quiz.\n` +
+            `My score: ${score}/24\n` +
+            `Result: ${band.label}\n` +
+            `Recommendation: ${band.next}\n` +
+            `I would like to book the next step consultation.`
+        );
+        whatsappBtn.href = `https://wa.me/918240516775?text=${message}`;
+      }
+
+      if (resultSection) {
+        resultSection.classList.remove('hidden');
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        screeningForm.reset();
+        updateProgress();
+        if (resultSection) resultSection.classList.add('hidden');
+      });
+    }
+
+    updateProgress();
   }
 
   /* ── Toast Notification ── */

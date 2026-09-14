@@ -33,7 +33,6 @@ proposal.*
 
 # Ignore GitHub files (commented out to allow workflows)
 # .github/
-README.md
 
 # Ignore logs
 *.log

@@ -104,6 +104,43 @@ img {
   max-height: 500px;
 }
 
+/* Global floating quiz CTA */
+.floating-quiz-btn {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 8.75rem;
+  z-index: 40;
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--joy-blue), #2c5ab8);
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 14px 28px rgba(22, 47, 97, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.floating-quiz-btn:hover {
+  background: var(--joy-ink);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(11, 20, 39, 0.34);
+}
+
+.floating-quiz-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(28, 47, 116, 0.2);
+}
+
+@media (min-width: 768px) {
+  .floating-quiz-btn {
+    display: inline-flex;
+  }
+}
+
 /* Homepage carousels */
 .carousel-wrapper {
   position: relative;
