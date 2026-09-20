@@ -71,6 +71,9 @@ Below is the complete chronological index of all clinical blogs published on the
 | **31** | Signia vs Phonak vs Widex: Brand Comparison Guide | [`blog-signia-vs-phonak-vs-widex.html`](blog-signia-vs-phonak-vs-widex.html) | Hearing Aids |
 | **32** | Best Hearing Aids in Lucknow 2026: Brands, Prices & Clinics | [`blog-best-hearing-aids-lucknow-2026.html`](blog-best-hearing-aids-lucknow-2026.html) | Hearing Aids |
 | **33** | ReSound Hearing Aids in Lucknow: Why This Brand Stands Apart | [`blog-resound-hearing-aids-lucknow.html`](blog-resound-hearing-aids-lucknow.html) | Hearing Aids |
+| **34** | Invisible Hearing Aids: The Complete Guide to IIC and CIC in 2026 | [`blog-invisible-hearing-aids-guide-2026.html`](blog-invisible-hearing-aids-guide-2026.html) | Hearing Aids |
+| **35** | Diabetes and Hearing Loss: Why Your Blood Sugar Affects Your Ears | [`blog-diabetes-blood-sugar-hearing-loss.html`](blog-diabetes-blood-sugar-hearing-loss.html) | Audiology |
+| **36** | Auditory Processing Disorder: When Your Child Hears But Doesn't Understand | [`blog-auditory-processing-disorder-guide.html`](blog-auditory-processing-disorder-guide.html) | Pediatrics |
 
 ---
 
