@@ -20,12 +20,10 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/tailwind-config.js?v=20260213-2"></script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" /></noscript>
+    <link rel="stylesheet" href="assets/tailwind.min.css?v=20260920" />
     <link rel="stylesheet" href="assets/site.css?v=20260214-1" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
@@ -169,7 +167,7 @@
       <div class="mx-auto flex max-w-[1220px] items-center justify-between gap-4 px-4 py-3 md:px-8">
         <a href="index.html" class="flex items-center gap-3">
           <img
-            src="assets/logo-tm.jpg"
+            src="assets/logo-tm.webp"
             alt="Joyful Hearing and Speech Clinic"
             loading="eager"
             class="h-11 w-auto md:h-12"
@@ -319,7 +317,7 @@
                
                <!-- Featured Image -->
                <div class="mb-10 rounded-none overflow-hidden shadow-sm">
-                  <img src="assets/images/blog_signs_1.png" alt="5 Subtle Signs of Hearing Loss You Shouldn’t Ignore" class="w-full h-auto object-cover object-top">
+                  <img src="assets/images/blog_signs_1.webp" alt="5 Subtle Signs of Hearing Loss You Shouldn’t Ignore" class="w-full h-auto object-cover object-top">
                </div>
 
                <!-- Typography Body -->
@@ -332,25 +330,25 @@ Hearing loss often doesn't happen overnight. It is a gradual process that can be
 <h2>1. "Everyone is Mumbling"</h2>
 <p>One of the most common early complaints is the feeling that people aren't speaking clearly. You might hear the sound of the voice but struggle to distinguish specific consonants (like 's', 'f', or 't'), which makes words sound muffled.</p>
 <div class="my-8 rounded-none overflow-hidden shadow-sm">
-    <img src="assets/images/blog_signs_2.png" alt="Everyone is Mumbling" class="w-full h-auto object-cover">
+    <img src="assets/images/blog_signs_2.webp" alt="Everyone is Mumbling" class="w-full h-auto object-cover">
 </div>
 
 <h2>2. Exhaustion After Socializing</h2>
 <p>Do you feel physically drained after a dinner party or a meeting? This is known as "listening fatigue". When your ears aren't picking up clear signals, your brain has to work overtime to fill in the gaps, leading to mental exhaustion.</p>
 <div class="my-8 rounded-none overflow-hidden shadow-sm">
-    <img src="assets/images/blog_signs_3.png" alt="Listening Fatigue" class="w-full h-auto object-cover">
+    <img src="assets/images/blog_signs_3.webp" alt="Listening Fatigue" class="w-full h-auto object-cover">
 </div>
 
 <h2>3. The "TV Wars"</h2>
 <p>If family members frequently complain that the television or radio is too loud, it’s a classic sign. You may also find yourself struggling to hear on the phone, where you lack the visual cues of lip-reading to help you understand.</p>
 <div class="my-8 rounded-none overflow-hidden shadow-sm">
-    <img src="assets/images/blog_signs_4.png" alt="The TV Wars" class="w-full h-auto object-cover">
+    <img src="assets/images/blog_signs_4.webp" alt="The TV Wars" class="w-full h-auto object-cover">
 </div>
 
 <h2>4. Tinnitus (Ringing in the Ears)</h2>
 <p>Persistent ringing, buzzing, or hissing in your ears is often the brain’s way of trying to "make up" for sounds it is no longer receiving. Tinnitus is frequently linked to underlying hearing loss and should always be evaluated by a professional.</p>
 <div class="my-8 rounded-none overflow-hidden shadow-sm">
-    <img src="assets/images/blog_signs_5.png" alt="Tinnitus" class="w-full h-auto object-cover">
+    <img src="assets/images/blog_signs_5.webp" alt="Tinnitus" class="w-full h-auto object-cover">
 </div>
 
 <h2>5. Avoiding Noisy Environments</h2>
@@ -396,7 +394,7 @@ Hearing loss often doesn't happen overnight. It is a gradual process that can be
                   <p class="text-slate-500  text-sm leading-relaxed mb-4">
                     Joyful Hearing & Speech Clinic is Lucknow's premier center for audiology and speech therapy. Dedicated to restoring the joy of hearing.
                   </p>
-                  <img src="assets/logo-tm.jpg" alt="Signature" class="h-8 mx-auto opacity-50 grayscale hover:grayscale-0 transition-all">
+                  <img src="assets/logo-tm.webp" alt="Signature" class="h-8 mx-auto opacity-50 grayscale hover:grayscale-0 transition-all">
                </div>
 
                <!-- Socials Widget -->
@@ -445,7 +443,7 @@ Hearing loss often doesn't happen overnight. It is a gradual process that can be
         <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <a href="index.html" class="inline-flex items-center gap-3">
-              <img src="assets/logo-tm.jpg" alt="Joyful Hearing and Speech Clinic" loading="lazy" class="h-10 w-auto" />
+              <img src="assets/logo-tm.webp" alt="Joyful Hearing and Speech Clinic" loading="lazy" class="h-10 w-auto" />
             </a>
             <p class="mt-4 text-sm leading-relaxed text-slate-400">
               Empowering lives through better hearing and speech. Your trusted partner for clinical audiology and speech therapy in Lucknow.
@@ -530,6 +528,21 @@ Hearing loss often doesn't happen overnight. It is a gradual process that can be
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+    function loadGoogleTranslate() {
+      if (!document.getElementById("google-translate-script")) {
+        var s = document.createElement("script");
+        s.id = "google-translate-script";
+        s.type = "text/javascript";
+        s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        document.body.appendChild(s);
+      }
+    }
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadGoogleTranslate, { timeout: 3500 });
+    } else {
+      window.addEventListener("load", function() { setTimeout(loadGoogleTranslate, 1500); });
+    }
+  </script>
 </body>
 </html>

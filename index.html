@@ -1,14 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17285985948"></script>
+    <!-- Google tag (gtag.js) - Deferred to prioritize Core Web Vitals & FCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'AW-17285985948');
+
+      function loadGtag() {
+        if (!document.getElementById('gtag-script')) {
+          var s = document.createElement('script');
+          s.id = 'gtag-script';
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17285985948';
+          document.head.appendChild(s);
+        }
+      }
+      if (document.readyState === 'complete') {
+        loadGtag();
+      } else {
+        window.addEventListener('load', loadGtag);
+      }
     </script>
 
     <meta charset="UTF-8" />
@@ -20,13 +33,12 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/tailwind-config.js?v=20260213-2"></script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" /></noscript>
+    <link rel="stylesheet" href="assets/tailwind.min.css?v=20260920" />
     <link rel="stylesheet" href="assets/site.css?v=20260214-1" />
+    <link rel="preload" as="image" href="assets/images/homepage_hero_ent_1770780425593.webp" fetchpriority="high" type="image/webp" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -170,9 +182,12 @@
       <div class="mx-auto flex max-w-[1220px] items-center justify-between gap-4 px-4 py-3 md:px-8">
         <a href="index.html" class="flex items-center gap-3">
           <img
-            src="assets/logo-tm.jpg"
+            src="assets/logo-tm.webp"
             alt="Joyful Hearing and Speech Clinic"
             loading="eager"
+            width="160"
+            height="49"
+            decoding="async"
             class="h-11 w-auto md:h-12"
           />
         </a>
@@ -701,7 +716,7 @@
             <!-- Ashish Kumar Bharti -->
             <div class="flex flex-col sm:flex-row gap-6 items-start">
               <div class="w-32 h-32 shrink-0 rounded-2xl bg-slate-100 overflow-hidden relative">
-                 <img class="aspect-[3/2] w-full rounded-2xl object-cover" src="assets/ashish-bharti.jpg" alt="Dr. Ashish Bharti - Audiologist and Speech-Language Pathologist">
+                 <img class="aspect-[3/2] w-full rounded-2xl object-cover" src="assets/ashish-bharti.webp" alt="Dr. Ashish Bharti - Audiologist and Speech-Language Pathologist" width="800" height="600" loading="lazy" decoding="async">
               </div>
               <div>
                 <h3 class="font-display text-xl font-bold text-joy-ink">Ashish Kumar Bharti</h3>
@@ -715,7 +730,7 @@
             <!-- Mohini Yadav -->
              <div class="flex flex-col sm:flex-row gap-6 items-start">
               <div class="w-32 h-32 shrink-0 rounded-2xl bg-slate-100 overflow-hidden relative">
-                 <img loading="lazy" src="assets/mohini-profile.jpg" alt="Mohini Yadav" class="w-full h-full object-cover" width="640" height="640" decoding="async">
+                 <img loading="lazy" src="assets/mohini-profile.webp" alt="Mohini Yadav" class="w-full h-full object-cover" width="640" height="640" decoding="async">
               </div>
               <div>
                 <h3 class="font-display text-xl font-bold text-joy-ink">Mohini Yadav</h3>
@@ -1019,7 +1034,7 @@
               <div class="space-y-6">
                 <a href="blog-elderly-hearing.html" class="group flex items-start gap-4 rounded-2xl bg-slate-50 p-4 transition-colors hover:bg-blue-50">
                   <div class="relative h-24 w-32 shrink-0 overflow-hidden rounded-xl">
-                    <img loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/blog_elderly_hearing_1.png" alt="6 Signs Your Elderly Parent Is Losing Their Hearing" />
+                    <img loading="lazy" width="1080" height="1080" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/blog_elderly_hearing_1.webp" alt="6 Signs Your Elderly Parent Is Losing Their Hearing" />
                   </div>
                   <div>
                     <h3 class="font-display text-lg font-bold text-slate-900 group-hover:text-joy-blue">6 Signs Your Elderly Parent Is Losing Their Hearing</h3>
@@ -1029,7 +1044,7 @@
 
                 <a href="blog-speech-delay.html" class="group flex items-start gap-4 rounded-2xl bg-slate-50 p-4 transition-colors hover:bg-blue-50">
                    <div class="relative h-24 w-32 shrink-0 overflow-hidden rounded-xl">
-                    <img loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/blog_speech_delay_img2.jpg" alt="Early Signs of Speech Delay in Children" />
+                    <img loading="lazy" width="940" height="580" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="assets/images/blog_speech_delay_img2.jpg" alt="Early Signs of Speech Delay in Children" />
                   </div>
                   <div>
                     <h3 class="font-display text-lg font-bold text-slate-900 group-hover:text-joy-blue">Early Signs of Speech Delay in Children</h3>
@@ -1071,7 +1086,7 @@
         <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <a href="index.html" class="inline-flex items-center gap-3">
-              <img src="assets/logo-tm.jpg" alt="Joyful Hearing and Speech Clinic" loading="lazy" class="h-10 w-auto" />
+              <img src="assets/logo-tm.webp" alt="Joyful Hearing and Speech Clinic" loading="lazy" width="131" height="40" decoding="async" class="h-10 w-auto" />
             </a>
             <p class="mt-4 text-sm leading-relaxed text-slate-400">
               Empowering lives through better hearing and speech. Your trusted partner for clinical audiology and speech therapy in Lucknow.
@@ -1387,6 +1402,21 @@
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+    function loadGoogleTranslate() {
+      if (!document.getElementById("google-translate-script")) {
+        var s = document.createElement("script");
+        s.id = "google-translate-script";
+        s.type = "text/javascript";
+        s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        document.body.appendChild(s);
+      }
+    }
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadGoogleTranslate, { timeout: 3500 });
+    } else {
+      window.addEventListener("load", function() { setTimeout(loadGoogleTranslate, 1500); });
+    }
+  </script>
 </body>
 </html>

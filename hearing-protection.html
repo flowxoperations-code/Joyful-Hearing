@@ -17,9 +17,10 @@
   <meta name="description" content="Custom earplugs, musician monitors, industrial hearing protection. Prevent noise-induced hearing loss at Joyful Hearing Clinic, Lucknow."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="assets/tailwind-config.js?v=20260213-2"></script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" /></noscript>
+  <link rel="stylesheet" href="assets/tailwind.min.css?v=20260920" />
   <link rel="stylesheet" href="assets/site.css?v=20260214-1"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"/>  <!-- Google Translate -->
@@ -140,7 +141,7 @@
     </div>
     <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-lg">
       <div class="mx-auto flex max-w-[1220px] items-center justify-between gap-4 px-4 py-3 md:px-8">
-        <a href="index.html"><img src="assets/logo-tm.jpg" alt="Joyful Hearing and Speech Clinic" loading="eager" class="h-11 w-auto md:h-12" /></a>
+        <a href="index.html"><img src="assets/logo-tm.webp" alt="Joyful Hearing and Speech Clinic" loading="eager" class="h-11 w-auto md:h-12" /></a>
         <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-600 lg:flex">
           <a href="index.html" data-nav class="link-underline">Home</a>
           <div class="group relative py-4" data-dropdown>
@@ -231,7 +232,7 @@
 
       <section class="relative isolate overflow-hidden pt-6 lg:pt-10">
         <div class="absolute inset-0 -z-10">
-          <img loading="eager" src="assets/hearing protection image in noisy work.png" alt="Workers using hearing protection in a noisy workplace" class="h-full w-full object-cover opacity-70" style="object-position: center 40%" width="1024" height="1536"/>
+          <img loading="eager" src="assets/hearing protection image in noisy work.webp" alt="Workers using hearing protection in a noisy workplace" class="h-full w-full object-cover opacity-70" style="object-position: center 40%" width="1024" height="1536"/>
           <div class="absolute inset-0 bg-gradient-to-r from-white/96 via-white/60 to-transparent"></div>
         </div>
         <div class="mx-auto max-w-[1280px] px-6 lg:px-8">
@@ -315,7 +316,7 @@
       <div class="relative mx-auto max-w-[1220px] px-4 py-12 md:px-8">
         <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <a href="index.html"><img src="assets/logo-tm.jpg" alt="Joyful Hearing and Speech Clinic" loading="lazy" class="h-10 w-auto" /></a>
+            <a href="index.html"><img src="assets/logo-tm.webp" alt="Joyful Hearing and Speech Clinic" loading="lazy" class="h-10 w-auto" /></a>
             <p class="mt-4 text-sm leading-relaxed text-slate-400">Empowering lives through better hearing and speech. Your trusted partner for clinical audiology and speech therapy in Lucknow.</p>
           </div>
           <div>
@@ -375,6 +376,21 @@
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+    function loadGoogleTranslate() {
+      if (!document.getElementById("google-translate-script")) {
+        var s = document.createElement("script");
+        s.id = "google-translate-script";
+        s.type = "text/javascript";
+        s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        document.body.appendChild(s);
+      }
+    }
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadGoogleTranslate, { timeout: 3500 });
+    } else {
+      window.addEventListener("load", function() { setTimeout(loadGoogleTranslate, 1500); });
+    }
+  </script>
 </body>
 </html>

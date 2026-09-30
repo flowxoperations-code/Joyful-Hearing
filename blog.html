@@ -20,12 +20,10 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/tailwind-config.js?v=20260213-2"></script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" /></noscript>
+    <link rel="stylesheet" href="assets/tailwind.min.css?v=20260920" />
     <link rel="stylesheet" href="assets/site.css?v=20260214-1" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
@@ -168,7 +166,7 @@
       <div class="mx-auto flex max-w-[1220px] items-center justify-between gap-4 px-4 py-3 md:px-8">
         <a href="index.html" class="flex items-center gap-3">
           <img
-            src="assets/logo-tm.jpg"
+            src="assets/logo-tm.webp"
             alt="Joyful Hearing and Speech Clinic"
             loading="eager"
             class="h-11 w-auto md:h-12"
@@ -315,11 +313,57 @@
             <div class="lg:col-span-8">
               <div class="grid md:grid-cols-2 gap-x-8 gap-y-12">
 
+                <!-- Blog Post: Presbycusis -->
+                <article class="flex flex-col group">
+                  <div class="relative overflow-hidden mb-6">
+                    <a href="blog-presbycusis.html" class="block h-64 overflow-hidden">
+                       <img src="assets/images/blog_38_presbycusis_1.jpg" alt="Presbycusis: Age-Related Hearing Loss" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                    </a>
+                  </div>
+                  <div class="text-center px-2">
+                    <div class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3 text-center border-t border-b border-slate-100 py-2 inline-block mx-auto">
+                      September 29, 2026
+                    </div>
+                    <h2 class="font-display text-2xl font-bold text-joy-ink mb-3 group-hover:text-joy-blue transition-colors leading-tight">
+                      <a href="blog-presbycusis.html">Presbycusis: Understanding Age-Related Hearing Loss and What to Do About It</a>
+                    </h2>
+                    <p class="text-slate-600 mb-6 text-sm leading-relaxed line-clamp-3">
+                      Presbycusis affects one in three adults over 60. Learn about age-related hearing loss, its symptoms, and the best ways to treat it.
+                    </p>
+                    <a href="blog-presbycusis.html" class="inline-block border border-slate-300 px-6 py-2 text-xs font-bold tracking-widest text-slate-700 uppercase hover:bg-joy-blue hover:text-white hover:border-joy-blue transition-all">
+                      Read More
+                    </a>
+                  </div>
+                </article>
+
+                <!-- Blog Post: Hearing Loss & Depression -->
+                <article class="flex flex-col group">
+                  <div class="relative overflow-hidden mb-6">
+                    <a href="blog-hearing-loss-depression.html" class="block h-64 overflow-hidden">
+                       <img src="assets/images/blog_37_hearing_loss_depression_1.jpg" alt="Hearing Loss and Depression" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                    </a>
+                  </div>
+                  <div class="text-center px-2">
+                    <div class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3 text-center border-t border-b border-slate-100 py-2 inline-block mx-auto">
+                      September 29, 2026
+                    </div>
+                    <h2 class="font-display text-2xl font-bold text-joy-ink mb-3 group-hover:text-joy-blue transition-colors leading-tight">
+                      <a href="blog-hearing-loss-depression.html">Hearing Loss and Depression: The Silent Link Nobody Talks About</a>
+                    </h2>
+                    <p class="text-slate-600 mb-6 text-sm leading-relaxed line-clamp-3">
+                      Untreated hearing loss is strongly linked to depression. Learn how hearing aids can help you reconnect with the world and improve mental health.
+                    </p>
+                    <a href="blog-hearing-loss-depression.html" class="inline-block border border-slate-300 px-6 py-2 text-xs font-bold tracking-widest text-slate-700 uppercase hover:bg-joy-blue hover:text-white hover:border-joy-blue transition-all">
+                      Read More
+                    </a>
+                  </div>
+                </article>
+
                 <!-- Blog Post: Auditory Processing Disorder (Blog 36) -->
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-auditory-processing-disorder-guide.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_apd_understanding_1.png" alt="Auditory Processing Disorder: When Your Child Hears But Doesn't Understand" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_apd_understanding_1.webp" alt="Auditory Processing Disorder: When Your Child Hears But Doesn't Understand" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -342,7 +386,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-diabetes-blood-sugar-hearing-loss.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_diabetes_sugar_1.png" alt="Diabetes and Hearing Loss: Why Your Blood Sugar Affects Your Ears" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_diabetes_sugar_1.webp" alt="Diabetes and Hearing Loss: Why Your Blood Sugar Affects Your Ears" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -857,7 +901,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-cognitive-load.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_12_cognitive_load_1.png" alt="More Than Just Sound: How Hearing Health Protects Your Brain" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_12_cognitive_load_1.webp" alt="More Than Just Sound: How Hearing Health Protects Your Brain" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -880,7 +924,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-speech-delay-lucknow.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_11_speech_delay_1.png" alt="Why Your Child's Speech Delay Shouldn't Wait: A Guide for Lucknow Parents" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_11_speech_delay_1.webp" alt="Why Your Child's Speech Delay Shouldn't Wait: A Guide for Lucknow Parents" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -903,7 +947,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-signs-of-hearing-loss.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_signs_1.png" alt="5 Subtle Signs of Hearing Loss You Shouldn’t Ignore" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_signs_1.webp" alt="5 Subtle Signs of Hearing Loss You Shouldn’t Ignore" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -926,7 +970,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-early-intervention.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_early_intervention_1.png" alt="Why Early Intervention is the Key to Your Child’s Communication Success" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_early_intervention_1.webp" alt="Why Early Intervention is the Key to Your Child’s Communication Success" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -995,7 +1039,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-hearing-aid-technology.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_hearing_tech_1.png" alt="Hearing Aids in 2026 — Smarter Than You Think" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_hearing_tech_1.webp" alt="Hearing Aids in 2026 — Smarter Than You Think" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -1018,7 +1062,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-child-hearing-loss.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_child_hearing_1.png" alt="10 Warning Signs of Hearing Loss in Children Every Parent Must Know" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_child_hearing_1.webp" alt="10 Warning Signs of Hearing Loss in Children Every Parent Must Know" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -1064,7 +1108,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-hearing-aid-benefits.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_hearing_aid_benefits_1.png" alt="Life-Changing Benefits of Hearing Aids You Need to Know" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_hearing_aid_benefits_1.webp" alt="Life-Changing Benefits of Hearing Aids You Need to Know" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -1087,7 +1131,7 @@
                 <article class="flex flex-col group">
                   <div class="relative overflow-hidden mb-6">
                     <a href="blog-elderly-hearing.html" class="block h-64 overflow-hidden">
-                       <img src="assets/images/blog_elderly_hearing_1.png" alt="6 Signs Your Elderly Parent Is Losing Their Hearing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                       <img src="assets/images/blog_elderly_hearing_1.webp" alt="6 Signs Your Elderly Parent Is Losing Their Hearing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     </a>
                   </div>
                   <div class="text-center px-2">
@@ -1194,7 +1238,7 @@
                   <p class="text-slate-500  text-sm leading-relaxed mb-4">
                     Joyful Hearing & Speech Clinic is Lucknow's premier center for audiology and speech therapy. Dedicated to restoring the joy of hearing.
                   </p>
-                  <img src="assets/logo-tm.jpg" alt="Signature" class="h-8 mx-auto opacity-50 grayscale hover:grayscale-0 transition-all">
+                  <img src="assets/logo-tm.webp" alt="Signature" class="h-8 mx-auto opacity-50 grayscale hover:grayscale-0 transition-all">
                </div>
 
                <!-- Socials Widget -->
@@ -1243,7 +1287,7 @@
         <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <a href="index.html" class="inline-flex items-center gap-3">
-              <img src="assets/logo-tm.jpg" alt="Joyful Hearing and Speech Clinic" loading="lazy" class="h-10 w-auto" />
+              <img src="assets/logo-tm.webp" alt="Joyful Hearing and Speech Clinic" loading="lazy" class="h-10 w-auto" />
             </a>
             <p class="mt-4 text-sm leading-relaxed text-slate-400">
               Empowering lives through better hearing and speech. Your trusted partner for clinical audiology and speech therapy in Lucknow.
@@ -1328,6 +1372,21 @@
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+    function loadGoogleTranslate() {
+      if (!document.getElementById("google-translate-script")) {
+        var s = document.createElement("script");
+        s.id = "google-translate-script";
+        s.type = "text/javascript";
+        s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        document.body.appendChild(s);
+      }
+    }
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadGoogleTranslate, { timeout: 3500 });
+    } else {
+      window.addEventListener("load", function() { setTimeout(loadGoogleTranslate, 1500); });
+    }
+  </script>
 </body>
 </html>

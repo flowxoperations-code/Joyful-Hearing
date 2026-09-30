@@ -192,5 +192,41 @@ class TestJoyfulHearingIntegration(unittest.TestCase):
                 img_path = os.path.join(WORKSPACE_DIR, clean_src)
                 self.assertTrue(os.path.exists(img_path), f"Referenced image {src} must exist at {img_path}")
 
+    def test_performance_optimizations(self):
+        """13. Verify elimination of Tailwind CDN, presence of static CSS, htaccess, and image dimensions."""
+        # 1. No cdn.tailwindcss.com in index or best-hearing-aid-lucknow
+        self.assertNotIn("cdn.tailwindcss.com", self.index_content, "Tailwind Play CDN must be removed from index.html.")
+        self.assertNotIn("cdn.tailwindcss.com", self.new_page_content, "Tailwind Play CDN must be removed from best-hearing-aid-lucknow.html.")
+
+        # 2. Static CSS referenced and exists
+        self.assertIn("assets/tailwind.min.css", self.index_content)
+        self.assertIn("assets/tailwind.min.css", self.new_page_content)
+        tailwind_css_path = os.path.join(WORKSPACE_DIR, "assets", "tailwind.min.css")
+        self.assertTrue(os.path.exists(tailwind_css_path), "assets/tailwind.min.css must exist.")
+        css_size = os.path.getsize(tailwind_css_path)
+        self.assertGreater(css_size, 5000, f"Tailwind CSS file is suspiciously small: {css_size} bytes")
+
+        # 3. .htaccess exists with compression & caching
+        htaccess_path = os.path.join(WORKSPACE_DIR, ".htaccess")
+        self.assertTrue(os.path.exists(htaccess_path), ".htaccess must exist.")
+        with open(htaccess_path, "r", encoding="utf-8") as f:
+            htaccess_content = f.read()
+        self.assertIn("mod_deflate.c", htaccess_content)
+        self.assertIn("mod_expires.c", htaccess_content)
+
+        # 4. 100% of images in index.html have width and height
+        index_imgs = re.findall(r'<img[^>]+>', self.index_content)
+        for img in index_imgs:
+            self.assertTrue("width=" in img and "height=" in img, f"Image missing dimensions in index.html: {img}")
+
+        # 5. 100% of images in best-hearing-aid-lucknow.html have width and height
+        page_imgs = re.findall(r'<img[^>]+>', self.new_page_content)
+        for img in page_imgs:
+            self.assertTrue("width=" in img and "height=" in img, f"Image missing dimensions in best-hearing-aid-lucknow.html: {img}")
+
+        # 6. Hero image preload present
+        self.assertIn('rel="preload" as="image"', self.index_content)
+        self.assertIn('rel="preload" as="image"', self.new_page_content)
+
 if __name__ == "__main__":
     unittest.main()
