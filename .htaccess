@@ -1,0 +1,7 @@
+# Retired short blog URLs. Hostinger public_html (LiteSpeed) applies this on deploy.
+# These rules are exact, so the longer article filenames are left alone.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^blog-hearing-loss-depression\.html$ /blog-hearing-loss-and-depression.html [R=301,L]
+    RewriteRule ^blog-presbycusis\.html$ /blog-presbycusis-age-related-hearing-loss.html [R=301,L]
+</IfModule>
